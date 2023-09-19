@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Timer</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<header>
+		<h1><img src="images/weniv.svg"></h1>
+	</header>
+	<main>
+		<div class="timer">
+			<h3 class="timer-title">TIMER</h3>
+			<div class="set-timer">
+				<div class="input-container">
+					<p>hrs</p>
+					<img src="images/hours.svg">
+					<input type="number" placeholder=0 class="numericInput">
+				</div>
+				<img src="images/dots.svg" class="dots">
+				<div class="input-container">
+					<p>min</p>
+					<img src="images/hours.svg">
+					<input type="number" placeholder=0 class="numericInput">
+				</div>
+				<img src="images/dots.svg" class="dots">
+				<div class="input-container">
+					<p>sec</p>
+					<img src="images/hours.svg">
+					<input type="number" placeholder=0 class="numericInput">
+				</div>
+			</div>
+
+			<div class="buttons">
+				<button>
+					<img src="images/start.svg">start
+				</button>
+				<button>
+					<img src="images/reset.svg">reset
+				</button>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<p>ⓒ WENIV Corp.</p>
+	</footer>
+
+	<script>
+		const numericInput = document.querySelector(".numericInput");
+
+		numericInput.addEventListener("input", function (e) {
+			numericInput.value = numericInput.value.replace(/[^0-9.-]/g, "");
+		});
+	</script>
+</body>
+
+</html>
