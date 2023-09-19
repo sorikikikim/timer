@@ -39,10 +39,10 @@
 
 			<div class="buttons">
 				<button>
-					<img src="images/start.svg">start
+					<img src="images/start.svg" class="btn-start">start
 				</button>
 				<button>
-					<img src="images/reset.svg">reset
+					<img src="images/reset.svg" class="btn-reset">reset
 				</button>
 			</div>
 		</div>
@@ -52,11 +52,34 @@
 	</footer>
 
 	<script>
-		const numericInput = document.querySelector(".numericInput");
+		const numericInputs = document.querySelectorAll(".numericInput");
+		const startButton = document.querySelector(".btn-start");
+		const resetButton = document.querySelector(".btn-reset");
 
 		numericInput.addEventListener("input", function (e) {
 			numericInput.value = numericInput.value.replace(/[^0-9.-]/g, "");
 		});
+
+		function updateButtonColors() {
+			const inputsAreValid = Array.from(numericInputs).every((input) => {
+				const value = parseFloat(input.value);
+				return !isNaN(value) && value >= 24;
+			});
+
+			if (inputsAreValid) {
+				startButton.style.backgroundColor = "#5180FF";
+				resetButton.style.backgroundColor = "#FB7099";
+			} else {
+				startButton.style.backgroundColor = "#324577";
+				resetButton.style.backgroundColor = "#324577";
+			}
+		}
+
+		numericInputs.forEach((input) => {
+			input.addEventListener("input", updateButtonColors);
+		});
+
+		updateButtonColors();
 	</script>
 </body>
 
